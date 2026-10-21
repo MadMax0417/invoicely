@@ -9,7 +9,8 @@ import { formatMoney } from "@/lib/format";
 import { computeTotals } from "@/lib/totals";
 import { useInvoiceDraft } from "@/lib/use-invoice";
 
-const BIO_URL = "https://bio.saarthistudio.com";
+const BIO_URL = "https://www.saarthistudio.com";
+const TOOL_URL = "https://bio.saarthistudio.com";
 
 /** Field styling without any width — compose with w-full / flex-1 / w-28. */
 const fieldBase =
@@ -506,14 +507,14 @@ export default function Editor() {
               tab. PDFs are generated on your device.
             </p>
           </div>
-          <div className="flex items-center gap-5 text-sm">
+          <div className="flex items-center gap-8 text-sm">
             <a
-              href={BIO_URL}
+              href={TOOL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-gray-600 transition hover:text-indigo-600"
             >
-              Bio by Saarthi ↗
+              Check out - Bio by Saarthi ↗
             </a>
             <Link href="/privacy" className="font-medium text-gray-600 transition hover:text-indigo-600">
               Privacy

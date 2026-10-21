@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://invoice.saarthistudio.com"),
+  metadataBase: new URL("https://invoicely.saarthistudio.com"),
   title: {
     default: "Invoicely — Free Invoice Maker by Saarthi Studio",
     template: "%s · Invoicely",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Invoicely — Free Invoice Maker",
     description:
       "Create and download professional invoices in seconds. Free, no sign-up, nothing leaves your device.",
-    url: "https://invoice.saarthistudio.com",
+    url: "https://invoicely.saarthistudio.com",
     siteName: "Invoicely by Saarthi Studio",
     type: "website",
   },
