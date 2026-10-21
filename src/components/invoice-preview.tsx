@@ -149,7 +149,7 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
       {data.notes || data.paymentDetails ? (
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {data.notes ? (
-            <div>
+            <div className="order-2">
               <p className={sectionLabelCls} style={{ color: data.accent }}>
                 Notes
               </p>
