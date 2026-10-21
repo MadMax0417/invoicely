@@ -3,12 +3,13 @@
 import {
   Document,
   Font,
+  Image,
   Page,
   StyleSheet,
   Text,
   View,
 } from "@react-pdf/renderer";
-import { formatDate, formatMoney } from "@/lib/format";
+import { formatDate, formatMoney, tint } from "@/lib/format";
 import type { InvoiceData, Totals } from "@/lib/types";
 
 // Bundled Inter (supports ₹ and other symbols — core PDF fonts don't).
@@ -31,7 +32,6 @@ const INK = "#111418";
 const MUTED = "#6b7280";
 const FAINT = "#9ca3af";
 const LINE = "#e5e7eb";
-const HEAD_BG = "#f3f4f6";
 
 const styles = StyleSheet.create({
   page: {
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   tableHead: {
     fontFamily: "Inter",
     flexDirection: "row",
-    backgroundColor: HEAD_BG,
     paddingVertical: 7,
     paddingHorizontal: 8,
   },
@@ -174,6 +173,12 @@ const styles = StyleSheet.create({
     fontSize: 7,
     color: FAINT,
   },
+  logo: {
+    width: 130,
+    maxHeight: 56,
+    objectFit: "contain",
+    marginBottom: 6,
+  },
 });
 
 interface InvoicePDFProps {
@@ -195,6 +200,12 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
         {/* Header: who it's from + invoice identity */}
         <View style={styles.header}>
           <View style={{ maxWidth: 250 }}>
+            {data.logo ? (
+              // PDF primitive — alt text doesn't exist in PDF; the logo is decorative
+              // here because the sender's name is always printed right below it.
+              // eslint-disable-next-line jsx-a11y/alt-text
+              <Image src={data.logo} style={styles.logo} />
+            ) : null}
             <Text style={styles.fromName}>{data.fromName || "Your name / business"}</Text>
             {data.fromEmail ? (
               <Text style={styles.mutedText}>{data.fromEmail}</Text>
@@ -207,7 +218,7 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
           </View>
 
           <View>
-            <Text style={styles.title}>INVOICE</Text>
+            <Text style={[styles.title, { color: data.accent }]}>INVOICE</Text>
             <Text style={styles.metaLine}>
               <Text style={styles.metaLabel}>No. </Text>
               {data.invoiceNumber || "—"}
@@ -227,7 +238,7 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
 
         {/* Bill to */}
         <View style={styles.billTo}>
-          <Text style={styles.sectionLabel}>Bill to</Text>
+          <Text style={[styles.sectionLabel, { color: data.accent }]}>Bill to</Text>
           <Text style={styles.billName}>{data.toName || "Client name"}</Text>
           {data.toEmail ? <Text style={styles.mutedText}>{data.toEmail}</Text> : null}
           {data.toAddress ? (
@@ -239,7 +250,10 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
 
         {/* Items */}
         <View style={styles.table}>
-          <View style={styles.tableHead} fixed={false}>
+          <View
+            style={[styles.tableHead, { backgroundColor: tint(data.accent, 0.08) }]}
+            fixed={false}
+          >
             <Text style={[styles.headCell, styles.cellDesc]}>Description</Text>
             <Text style={[styles.headCell, styles.cellQty]}>Qty</Text>
             <Text style={[styles.headCell, styles.cellRate]}>Rate</Text>
@@ -291,9 +305,11 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
               </Text>
             </View>
           ) : null}
-          <View style={styles.totalRow}>
+          <View style={[styles.totalRow, { borderTopColor: data.accent }]}>
             <Text style={styles.totalLabel}>TOTAL</Text>
-            <Text style={styles.totalValue}>{formatMoney(totals.total, data.currency)}</Text>
+            <Text style={[styles.totalValue, { color: data.accent }]}>
+              {formatMoney(totals.total, data.currency)}
+            </Text>
           </View>
         </View>
 
@@ -302,7 +318,7 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
           <View style={styles.infoRow}>
             {data.notes ? (
               <View style={styles.infoBox}>
-                <Text style={styles.sectionLabel}>Notes</Text>
+                <Text style={[styles.sectionLabel, { color: data.accent }]}>Notes</Text>
                 <Text style={styles.infoText} wrap>
                   {data.notes}
                 </Text>
@@ -310,7 +326,9 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
             ) : null}
             {data.paymentDetails ? (
               <View style={styles.infoBox}>
-                <Text style={styles.sectionLabel}>Payment details</Text>
+                <Text style={[styles.sectionLabel, { color: data.accent }]}>
+                  Payment details
+                </Text>
                 <Text style={styles.infoText} wrap>
                   {data.paymentDetails}
                 </Text>

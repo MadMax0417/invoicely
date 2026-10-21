@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import CustomizeBar from "./customize-bar";
 import InvoicePreview from "./invoice-preview";
 import { CURRENCIES } from "@/lib/currencies";
 import { formatMoney } from "@/lib/format";
@@ -471,15 +472,24 @@ export default function Editor() {
             </div>
           </form>
 
-          {/* Preview */}
+          {/* Customize + preview */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="mb-3 flex items-baseline justify-between">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-gray-400">
-                Preview
-              </p>
-              <p className="text-xs text-gray-400">A4 · exactly what you download</p>
+            <div className="space-y-3">
+              <CustomizeBar
+                accent={data.accent}
+                logo={data.logo}
+                onAccentChange={(hex) => setField("accent", hex)}
+                onLogoChange={(dataUrl) => setField("logo", dataUrl)}
+                onLogoRemove={() => setField("logo", null)}
+              />
+              <div className="flex items-baseline justify-between px-1">
+                <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-gray-400">
+                  Preview
+                </p>
+                <p className="text-xs text-gray-400">A4 · exactly what you download</p>
+              </div>
+              <InvoicePreview data={data} totals={totals} />
             </div>
-            <InvoicePreview data={data} totals={totals} />
           </div>
         </div>
       </main>

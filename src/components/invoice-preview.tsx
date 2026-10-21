@@ -1,4 +1,4 @@
-import { formatDate, formatMoney } from "@/lib/format";
+import { formatDate, formatMoney, tint } from "@/lib/format";
 import type { InvoiceData, Totals } from "@/lib/types";
 
 interface InvoicePreviewProps {
@@ -11,12 +11,21 @@ interface InvoicePreviewProps {
  */
 export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
   const muted = "text-gray-500";
+  const sectionLabelCls = "text-[11px] font-semibold uppercase tracking-[0.14em]";
 
   return (
     <div className="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(16,24,40,0.05),0_12px_32px_-12px_rgba(16,24,40,0.12)] ring-1 ring-gray-900/5 sm:p-10">
       {/* Header */}
       <div className="flex items-start justify-between gap-6">
         <div className="min-w-0">
+          {data.logo ? (
+            // eslint-disable-next-line @next/next/no-img-element -- local data URL, intentionally un-optimized
+            <img
+              src={data.logo}
+              alt=""
+              className="mb-2 h-10 w-auto max-w-[180px] object-contain"
+            />
+          ) : null}
           <p className="text-[15px] font-semibold text-gray-900">
             {data.fromName || <span className="text-gray-300">Your name / business</span>}
           </p>
@@ -29,7 +38,12 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
         </div>
 
         <div className="shrink-0 text-right">
-          <p className="text-2xl font-bold tracking-wide text-gray-900">INVOICE</p>
+          <p
+            className="text-2xl font-bold tracking-wide"
+            style={{ color: data.accent }}
+          >
+            INVOICE
+          </p>
           <p className="mt-1 text-[13px] text-gray-500">
             <span className="text-gray-400">No. </span>
             {data.invoiceNumber || "—"}
@@ -49,7 +63,7 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
 
       {/* Bill to */}
       <div className="mt-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+        <p className={sectionLabelCls} style={{ color: data.accent }}>
           Bill to
         </p>
         <p className="mt-1.5 text-[15px] font-semibold text-gray-900">
@@ -65,7 +79,10 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
 
       {/* Items */}
       <div className="mt-8">
-        <div className="grid grid-cols-[minmax(0,1fr)_44px_84px_96px] gap-2 bg-gray-100 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+        <div
+          className="grid grid-cols-[minmax(0,1fr)_32px_74px_86px] gap-2 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gray-500 sm:grid-cols-[minmax(0,1fr)_44px_84px_96px]"
+          style={{ backgroundColor: tint(data.accent, 0.08) }}
+        >
           <span>Description</span>
           <span className="text-right">Qty</span>
           <span className="text-right">Rate</span>
@@ -77,7 +94,7 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
           return (
             <div
               key={item.id}
-              className="grid grid-cols-[minmax(0,1fr)_44px_84px_96px] gap-2 border-b border-gray-200 px-3 py-2.5 text-[13px] text-gray-800"
+              className="grid grid-cols-[minmax(0,1fr)_32px_74px_86px] gap-2 border-b border-gray-200 px-3 py-2.5 text-[13px] text-gray-800 sm:grid-cols-[minmax(0,1fr)_44px_84px_96px]"
             >
               <span className={item.description ? "" : "text-gray-300"}>
                 {item.description || "—"}
@@ -117,9 +134,12 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
             </span>
           </div>
         ) : null}
-        <div className="flex items-baseline justify-between border-t-2 border-gray-900 pt-2">
+        <div
+          className="flex items-baseline justify-between border-t-2 pt-2"
+          style={{ borderColor: data.accent }}
+        >
           <span className="text-[13px] font-semibold tracking-wide text-gray-900">TOTAL</span>
-          <span className="text-lg font-bold text-gray-900">
+          <span className="text-lg font-bold" style={{ color: data.accent }}>
             {formatMoney(totals.total, data.currency)}
           </span>
         </div>
@@ -130,7 +150,7 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {data.notes ? (
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+              <p className={sectionLabelCls} style={{ color: data.accent }}>
                 Notes
               </p>
               <p className={`mt-1.5 whitespace-pre-line text-[13px] leading-relaxed ${muted}`}>
@@ -140,7 +160,7 @@ export default function InvoicePreview({ data, totals }: InvoicePreviewProps) {
           ) : null}
           {data.paymentDetails ? (
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+              <p className={sectionLabelCls} style={{ color: data.accent }}>
                 Payment details
               </p>
               <p className={`mt-1.5 whitespace-pre-line text-[13px] leading-relaxed ${muted}`}>

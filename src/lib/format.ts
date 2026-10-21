@@ -44,3 +44,16 @@ export function defaultInvoiceNumber(): string {
   const stamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
   return `INV-${stamp}`;
 }
+
+/** Blend a hex color toward white: tint("#0d9488", 0.08) → "#ecf6f5" (bad input → default indigo). */
+export function tint(hex: string, alpha: number): string {
+  const match = /^#([0-9a-fA-F]{6})$/.exec(hex);
+  const value = match ? parseInt(match[1], 16) : 0x4f46e5;
+  const a = Math.min(Math.max(alpha, 0), 1);
+  const blend = (channel: number) => Math.round(channel * a + 255 * (1 - a));
+  const toHex = (n: number) => n.toString(16).padStart(2, "0");
+  const r = blend((value >> 16) & 255);
+  const g = blend((value >> 8) & 255);
+  const b = blend(value & 255);
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}

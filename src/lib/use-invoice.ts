@@ -27,6 +27,8 @@ export function createItem(): LineItem {
   };
 }
 
+export const DEFAULT_ACCENT = "#4f46e5";
+
 /** Blank invoice — dates and number are filled in after mount (avoids SSR/CSR drift). */
 export function createEmptyInvoice(): InvoiceData {
   return {
@@ -40,6 +42,8 @@ export function createEmptyInvoice(): InvoiceData {
     issueDate: "",
     dueDate: "",
     currency: "INR",
+    accent: DEFAULT_ACCENT,
+    logo: null,
     // Deterministic id: this runs during SSR/prerender and must match on the client.
     items: [{ id: "item-initial", description: "", qty: "1", rate: "" }],
     discountType: "percent",
@@ -66,10 +70,23 @@ function sanitize(stored: unknown): InvoiceData {
 
   for (const key of Object.keys(base) as (keyof InvoiceData)[]) {
     const value = raw[key];
-    if (key === "items" || key === "discountType") continue;
+    if (key === "items" || key === "discountType" || key === "accent") continue;
     if (typeof base[key] === "string" && typeof value === "string") {
       (merged as unknown as Record<string, string>)[key] = value;
     }
+  }
+
+  if (typeof raw.accent === "string" && /^#[0-9a-fA-F]{6}$/.test(raw.accent)) {
+    merged.accent = raw.accent;
+  }
+
+  // Logo: only accept a plausible, size-bounded image data URL.
+  if (
+    typeof raw.logo === "string" &&
+    raw.logo.startsWith("data:image/") &&
+    raw.logo.length <= 400_000
+  ) {
+    merged.logo = raw.logo;
   }
 
   if (raw.discountType === "percent" || raw.discountType === "flat") {
