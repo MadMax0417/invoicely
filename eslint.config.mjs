@@ -13,6 +13,15 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    // Loading a sessionStorage draft after mount is the correct
+    // hydration-safe pattern (the initial render must match the server HTML),
+    // so the blanket "no setState in effect" rule doesn't apply here.
+    files: ["src/lib/use-invoice.ts"],
+    rules: {
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
