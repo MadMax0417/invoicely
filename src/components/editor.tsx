@@ -1,16 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import CustomizeBar from "./customize-bar";
+import DownloadConfirmation from "./download-confirmation";
+import DownloadPopup from "./download-popup";
 import InvoicePreview from "./invoice-preview";
 import { CURRENCIES } from "@/lib/currencies";
+import { bumpDownloadCount } from "@/lib/download-count";
 import { formatMoney } from "@/lib/format";
 import { computeTotals } from "@/lib/totals";
 import { useInvoiceDraft } from "@/lib/use-invoice";
 
 const BIO_URL = "https://www.saarthistudio.com";
 const TOOL_URL = "https://bio.saarthistudio.com";
+
+/** What the download flow shows after an attempt: the full Bio popup every 5th
+ *  download, a quiet confirmation in between, and the failure popup on errors. */
+type DownloadResult = "full" | "quiet" | "error";
 
 /** Field styling without any width — compose with w-full / flex-1 / w-28. */
 const fieldBase =
@@ -37,6 +44,8 @@ export default function Editor() {
   const { data, setField, updateItem, addItem, removeItem, reset } = useInvoiceDraft();
   const totals = useMemo(() => computeTotals(data), [data]);
   const [downloading, setDownloading] = useState(false);
+  const [result, setResult] = useState<DownloadResult | null>(null);
+  const closeResult = useCallback(() => setResult(null), []);
 
   const hasDiscount = totals.discount > 0;
   const hasTax = totals.tax > 0;
@@ -58,9 +67,11 @@ export default function Editor() {
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 2000);
+      const count = bumpDownloadCount();
+      setResult(count === 1 || count % 5 === 0 ? "full" : "quiet");
     } catch (error) {
       console.error("PDF generation failed", error);
-      window.alert("Could not generate the PDF. Please try again.");
+      setResult("error");
     } finally {
       setDownloading(false);
     }
@@ -522,6 +533,11 @@ export default function Editor() {
           </div>
         </div>
       </footer>
+
+      {/* Download result — the full Bio popup every 5th download, a quiet toast otherwise */}
+      {result === "full" && <DownloadPopup popup="success" onClose={closeResult} />}
+      {result === "quiet" && <DownloadConfirmation onClose={closeResult} />}
+      {result === "error" && <DownloadPopup popup="error" onClose={closeResult} />}
     </div>
   );
 }

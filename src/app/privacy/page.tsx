@@ -17,7 +17,9 @@ export default function PrivacyPage() {
       </Link>
 
       <h1 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">Privacy</h1>
-      <p className="mt-2 text-[15px] text-gray-500">Last updated: October 2026</p>
+      <p className="mt-2 text-[15px] text-gray-500">
+        Last updated: October 22, 2026
+      </p>
 
       <div className="mt-8 space-y-6 text-[15px] leading-relaxed text-gray-700">
         <p>
@@ -32,6 +34,12 @@ export default function PrivacyPage() {
             draft is kept in your browser&apos;s <code className="rounded bg-gray-100 px-1.5 py-0.5 text-sm">sessionStorage</code>.
             It is erased automatically the moment you close the tab or the browser. No
             timers, no background sync, no copies.
+          </p>
+          <p>
+            There&apos;s one more thing in there: a single anonymous number counting
+            your downloads this session. We use it only to decide when to show the card
+            after you download — it contains nothing about you or your invoices and is
+            erased with your tab, just like your draft.
           </p>
         </section>
 
