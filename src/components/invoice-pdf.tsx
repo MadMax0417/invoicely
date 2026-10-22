@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Link,
 } from "@react-pdf/renderer";
 import { formatDate, formatMoney, tint } from "@/lib/format";
 import type { InvoiceData, Totals } from "@/lib/types";
@@ -338,9 +339,9 @@ export function InvoicePDF({ data, totals }: InvoicePDFProps) {
         ) : null}
 
         {/* Small credit — the only branding on the document */}
-        <Text style={styles.footer} fixed>
+        <Link style={styles.footer} fixed href="https://invoicely.saarthistudio.com">
           Made with Invoicely · Saarthi Studio
-        </Text>
+        </Link>
       </Page>
     </Document>
   );
