@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import Link from "next/link";
 import CustomizeBar from "./customize-bar";
 import DownloadConfirmation from "./download-confirmation";
 import DownloadPopup from "./download-popup";
@@ -13,7 +12,6 @@ import { computeTotals } from "@/lib/totals";
 import { useInvoiceDraft } from "@/lib/use-invoice";
 
 const BIO_URL = "https://www.saarthistudio.com";
-const TOOL_URL = "https://bio.saarthistudio.com";
 
 /** What the download flow shows after an attempt: the full Bio popup every 5th
  *  download, a quiet confirmation in between, and the failure popup on errors. */
@@ -505,34 +503,6 @@ export default function Editor() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200/80 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <div className="space-y-1">
-            <p className="text-sm font-semibold text-gray-900">
-              Invoicely — a free tool by Saarthi Studio
-            </p>
-            <p className="text-[13px] leading-relaxed text-gray-500">
-              No sign-up. Your draft stays in this browser and disappears when you close the
-              tab. PDFs are generated on your device.
-            </p>
-          </div>
-          <div className="flex items-center gap-8 text-sm">
-            <a
-              href={TOOL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-gray-600 transition hover:text-indigo-600"
-            >
-              Check out - Bio by Saarthi ↗
-            </a>
-            <Link href="/privacy" className="font-medium text-gray-600 transition hover:text-indigo-600">
-              Privacy
-            </Link>
-          </div>
-        </div>
-      </footer>
 
       {/* Download result — the full Bio popup every 5th download, a quiet toast otherwise */}
       {result === "full" && <DownloadPopup popup="success" onClose={closeResult} />}

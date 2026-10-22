@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy",
   description: "How Invoicely handles your data — it stays on your device.",
+  alternates: { canonical: "./" },
 };
 
 export default function PrivacyPage() {

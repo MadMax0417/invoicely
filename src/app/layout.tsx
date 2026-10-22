@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   },
   description:
     "Create and download professional invoices in seconds. Free, no sign-up — your data never leaves your browser.",
+  keywords: [
+    "free invoice maker",
+    "invoice generator",
+    "create invoice online",
+    "invoice maker no sign up",
+    "download invoice pdf",
+  ],
+  alternates: { canonical: "./" },
   openGraph: {
     title: "Invoicely — Free Invoice Maker",
     description:
@@ -23,6 +31,24 @@ export const metadata: Metadata = {
     siteName: "Invoicely by Saarthi Studio",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Invoicely — Free Invoice Maker",
+    description:
+      "Create and download professional invoices in seconds. Free, no sign-up.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  authors: [{ name: "Saarthi Studio", url: "https://www.saarthistudio.com" }],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

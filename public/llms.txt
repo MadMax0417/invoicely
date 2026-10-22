@@ -1,0 +1,17 @@
+# Invoicely
+
+> Free online invoice maker by Saarthi Studio. Fill a simple form, preview the
+> invoice live as an A4 page, and download it as a clean PDF — entirely in the
+> browser.
+
+- URL: https://invoicely.saarthistudio.com
+- Privacy details: https://invoicely.saarthistudio.com/privacy
+- Price: free — no paid tier, no ads, no trackers
+- Sign-up: not required; no account system exists
+- Data: drafts live only in the browser (sessionStorage) and are erased when
+  the tab closes; PDFs are generated on the user's device; invoice content
+  never touches a server
+- Currencies: 12, including INR (₹, lakh/crore grouping), USD, EUR, GBP and JPY
+- Formatting: live A4 preview, percentage or flat discounts, tax rates,
+  business logo and accent color
+- Made by Saarthi Studio: https://www.saarthistudio.com
