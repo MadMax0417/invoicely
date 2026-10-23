@@ -10,8 +10,8 @@ import { bumpDownloadCount } from "@/lib/download-count";
 import { formatMoney } from "@/lib/format";
 import { computeTotals } from "@/lib/totals";
 import { useInvoiceDraft } from "@/lib/use-invoice";
-
-const BIO_URL = "https://www.saarthistudio.com";
+import Link from "next/link";
+import { STUDIO_LINKS } from "@/lib/links";
 
 /** What the download flow shows after an attempt: the full Bio popup every 5th
  *  download, a quiet confirmation in between, and the failure popup on errors. */
@@ -81,11 +81,15 @@ export default function Editor() {
       <header className="sticky top-0 z-30 border-b border-gray-200/80 bg-white/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-2.5">
-            <span className="text-[17px] font-bold tracking-tight text-gray-900">
+            <Link
+              href="/"
+              aria-label="Invoicely — home"
+              className="text-[17px] font-bold tracking-tight text-gray-900 transition hover:text-indigo-600"
+            >
               Invoicely
-            </span>
+            </Link>
             <a
-              href={BIO_URL}
+              href={STUDIO_LINKS.header}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-medium text-gray-500 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 sm:inline-flex"

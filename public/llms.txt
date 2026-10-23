@@ -4,7 +4,8 @@
 > invoice live as an A4 page, and download it as a clean PDF — entirely in the
 > browser.
 
-- URL: https://invoicely.saarthistudio.com
+- URL: https://invoicely.saarthistudio.com — overview, features and FAQ
+- Tool: https://invoicely.saarthistudio.com/tool — the invoice editor itself
 - Privacy details: https://invoicely.saarthistudio.com/privacy
 - Price: free — no paid tier, no ads, no trackers
 - Sign-up: not required; no account system exists

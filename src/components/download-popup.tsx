@@ -2,12 +2,7 @@
 
 import { useEffect, useId, useRef } from "react";
 
-/** "See how your Bio page would look" destination — placeholder until a demo
- *  bio page exists (same link as the footer's "Bio by Saarthi"). */
-const BIO_TOOL_URL = "https://bio.saarthistudio.com";
-
-/** Saarthi Studio's main site, linked from the card footnote. */
-const STUDIO_URL = "https://www.saarthistudio.com";
+import { BIO_LINKS, STUDIO_LINKS } from "@/lib/links";
 
 interface DownloadPopupProps {
   /** Which card to show: a download confirmation or a failure notice. */
@@ -152,7 +147,7 @@ export default function DownloadPopup({ popup, onClose }: DownloadPopupProps) {
               One link for your work, contact and payment details.
             </p>
             <a
-              href={BIO_TOOL_URL}
+              href={BIO_LINKS.popup}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 text-sm font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -183,7 +178,7 @@ export default function DownloadPopup({ popup, onClose }: DownloadPopupProps) {
             <p className="mt-1.5 text-[11px] text-gray-400">
               Invoicely is a free tool by{" "}
               <a
-                href={STUDIO_URL}
+                href={STUDIO_LINKS.popupFootnote}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 underline-offset-2 transition hover:text-indigo-600 hover:underline"

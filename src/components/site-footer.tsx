@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const BIO_TOOL_URL = "https://bio.saarthistudio.com";
+import { BIO_LINKS } from "@/lib/links";
 
 export default function SiteFooter() {
   return (
@@ -17,7 +17,7 @@ export default function SiteFooter() {
         </div>
         <div className="flex items-center gap-8 text-sm">
           <a
-            href={BIO_TOOL_URL}
+            href={BIO_LINKS.footer}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-gray-600 transition hover:text-indigo-600"

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { BIO_LINKS } from "@/lib/links";
+
 export const metadata: Metadata = {
   title: "Privacy",
   description: "How Invoicely handles your data — it stays on your device.",
@@ -11,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-16 sm:px-6">
       <Link
-        href="/"
+        href="/tool"
         className="text-sm font-medium text-indigo-600 transition hover:text-indigo-700"
       >
         ← Back to Invoicely
@@ -72,7 +74,7 @@ export default function PrivacyPage() {
         <p className="border-t border-gray-200 pt-6 text-sm text-gray-500">
           Questions? Reach out via{" "}
           <a
-            href="https://bio.saarthistudio.com"
+            href={BIO_LINKS.privacy}
             className="font-medium text-indigo-600 hover:underline"
           >
             Saarthi Studio
