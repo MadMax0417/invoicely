@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Editor from "@/components/editor";
 import SiteFooter from "@/components/site-footer";
+import { app, breadcrumb, graph, organization, website } from "@/lib/schema";
 
 /**
  * The tool itself. Route-level metadata distinguishes it from the marketing
@@ -26,11 +27,28 @@ export const metadata: Metadata = {
   },
 };
 
+/** Page-level structured data. The homepage carries the full product + FAQ
+ *  graph; this page only needs to say "I am the app" and where it sits in the
+ *  hierarchy, so AI readers can place the editor without re-reading the FAQ. */
+const TOOL_LD = graph([
+  organization,
+  website,
+  breadcrumb([
+    { name: "Invoicely", path: "/" },
+    { name: "Create an invoice", path: "/tool" },
+  ]),
+  app(),
+]);
+
 export default function ToolPage() {
   return (
     <>
       <Editor />
       <SiteFooter />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(TOOL_LD) }}
+      />
     </>
   );
 }

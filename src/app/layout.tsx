@@ -15,13 +15,6 @@ export const metadata: Metadata = {
   },
   description:
     "Create and download professional invoices in seconds. Free, no sign-up — your data never leaves your browser.",
-  keywords: [
-    "free invoice maker",
-    "invoice generator",
-    "create invoice online",
-    "invoice maker no sign up",
-    "download invoice pdf",
-  ],
   alternates: { canonical: "./" },
   openGraph: {
     title: "Invoicely — Free Invoice Maker",

@@ -1,0 +1,142 @@
+# Invoicely — full site text
+
+> Invoicely is a free online invoice maker by Saarthi Studio. Fill a short form,
+> watch a live A4 preview update as you type, and download a PDF generated
+> entirely in the browser. No account, no server, no trackers.
+
+Source: https://invoicely.saarthistudio.com
+Last updated: 2026-10-26
+
+---
+
+# Invoicely — Free Invoice Maker
+
+URL: https://invoicely.saarthistudio.com
+
+Free Invoice Maker — Create & Download PDF Invoices Online.
+
+Fill in a simple form and watch the A4 page take shape — then download a clean
+PDF. Everything runs in your browser: no sign-up, no server, and your draft
+disappears the moment you close the tab.
+
+Free forever · No sign-up · 12 currencies · Discounts and tax · Your logo and
+brand colour.
+
+## How it works — three steps, about a minute
+
+1. Fill in your business details, the client's details, and the line items.
+2. Watch the live A4 preview update as you type — totals, logo and your brand
+   colour.
+3. Download the PDF. It is generated on your own device, never on a server.
+
+## Why Invoicely
+
+- **No account, ever.** Open the page and start — there is nothing to register,
+  verify or pay for.
+- **Private by design.** Drafts live in your browser's sessionStorage and vanish
+  when the tab closes. PDFs are generated on your device — nothing is ever
+  uploaded.
+- **Live A4 preview.** The page you fill is the page you download — totals, logo
+  and accent colour, always in sync.
+- **12 currencies.** From ₹ with proper lakh/crore grouping to USD, EUR, GBP and
+  JPY — amounts format themselves.
+- **Discounts and tax.** Percentage or flat discounts plus tax rates,
+  recalculated live as you type.
+- **Your branding.** Add your logo and your accent colour — the PDF looks like
+  you sent it.
+
+## Frequently asked questions
+
+**Is Invoicely really free?**
+Yes — creating and downloading invoices is completely free. There is no paid
+tier, no watermark and nothing is locked behind sign-up.
+
+**Do I need to create an account?**
+No. There is no sign-up, no login and no email required. Open the page and start
+filling in your invoice right away.
+
+**Where is my invoice data stored?**
+In your browser only, in sessionStorage. Your draft is erased automatically when
+you close the tab, and nothing — not your invoice or your details — is ever sent
+to a server.
+
+**Which currencies can I use?**
+Twelve: Indian Rupee (₹), US Dollar, Euro, British Pound, UAE Dirham, Saudi
+Riyal, Qatari Riyal, Singapore Dollar, Australian Dollar, Canadian Dollar,
+Malaysian Ringgit and Japanese Yen — each with correct amount formatting,
+including lakh/crore grouping for ₹.
+
+**Can I add discounts and tax?**
+Yes. Add line items, then apply a percentage or flat discount and a tax rate —
+totals recalculate live and appear on the downloaded PDF.
+
+---
+
+# Create an Invoice — Free, Instant, No Sign-Up
+
+URL: https://invoicely.saarthistudio.com/tool
+
+The editor is a single page with a form on the left and a live A4 preview on the
+right. Everything is a native form field; the page works without an account and
+without JavaScript-driven routing.
+
+## Fields
+
+**From — you:** name or business, email, address.
+**To — client:** name or business, email, address.
+**Invoice details:** invoice number, issue date, due date, currency (12
+options).
+**Line items:** description, quantity, rate per row; add or remove rows. Each
+row's amount is quantity × rate.
+**Discount and tax:** discount as a percentage or a flat amount, plus a tax rate.
+**Notes and payment:** free-text notes and payment instructions (bank, account
+number, IFSC / UPI ID and similar).
+
+## Output
+
+A live A4 preview updates as you type. "Download PDF" renders the invoice on the
+device and saves it as a PDF file named after the invoice number. Nothing is
+uploaded, logged or stored on a server.
+
+---
+
+# Privacy
+
+URL: https://invoicely.saarthistudio.com/privacy
+Last updated: October 22, 2026
+
+Invoicely is built on a simple promise: your invoice never leaves your device.
+
+## What we store
+
+Nothing on our servers — we have none for this tool. While you work, your draft
+is kept in your browser's sessionStorage. It is erased automatically the moment
+you close the tab or the browser. No timers, no background sync, no copies.
+
+There is one more thing in there: a single anonymous number counting your
+downloads this session. It is used only to decide when to show the card after
+you download — it contains nothing about you or your invoices and is erased with
+your tab, just like your draft.
+
+## How your PDF is made
+
+The PDF is generated entirely in your browser and downloaded straight to you. No
+invoice content is uploaded, logged, or seen by anyone else.
+
+## Accounts and tracking
+
+No account is required and none is offered for this tool. We do not use
+advertising trackers. If analytics are ever added, they will be aggregated (page
+views only) and never tied to your invoice content.
+
+## Third-party links
+
+Invoicely links to other Saarthi Studio products. Visiting them is your choice
+and their own privacy policies apply.
+
+---
+
+# About the maker
+
+Invoicely is made by Saarthi Studio (https://www.saarthistudio.com), which also
+builds Bio — a single link for a freelancer's work, contacts and payments.

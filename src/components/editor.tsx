@@ -119,6 +119,19 @@ export default function Editor() {
       </header>
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+        {/* The page's only H1. Deliberately says "create an invoice" — the
+            homepage owns the "invoice maker / generator" head term, so this
+            page must not compete for it (cannibalization guardrail). */}
+        <div className="mb-6 lg:mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Create an invoice
+          </h1>
+          <p className="mt-1.5 text-[14px] text-gray-500">
+            Free, no sign-up — the preview updates as you type and the PDF is generated
+            on your device.
+          </p>
+        </div>
+
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-10">
           {/* Form */}
           <form className="space-y-5" onSubmit={(event) => event.preventDefault()}>

@@ -1,18 +1,42 @@
 # Invoicely
 
-> Free online invoice maker by Saarthi Studio. Fill a simple form, preview the
-> invoice live as an A4 page, and download it as a clean PDF — entirely in the
-> browser.
+> Invoicely is a free online invoice maker. Fill a short form, watch a live A4
+> preview update as you type, and download a PDF that is generated entirely in
+> the browser.
 
-- URL: https://invoicely.saarthistudio.com — overview, features and FAQ
-- Tool: https://invoicely.saarthistudio.com/tool — the invoice editor itself
-- Privacy details: https://invoicely.saarthistudio.com/privacy
-- Price: free — no paid tier, no ads, no trackers
-- Sign-up: not required; no account system exists
-- Data: drafts live only in the browser (sessionStorage) and are erased when
-  the tab closes; PDFs are generated on the user's device; invoice content
-  never touches a server
-- Currencies: 12, including INR (₹, lakh/crore grouping), USD, EUR, GBP and JPY
-- Formatting: live A4 preview, percentage or flat discounts, tax rates,
-  business logo and accent color
-- Made by Saarthi Studio: https://www.saarthistudio.com
+Invoicely is a single-purpose tool by Saarthi Studio. There is no account
+system, no server-side storage and no paid tier: the invoice draft lives in the
+browser's sessionStorage and is erased when the tab closes, and the PDF is
+rendered on the user's own device.
+
+- Canonical home: https://invoicely.saarthistudio.com
+- Price: free — no paid tier, no watermark, no ads, no trackers
+- Sign-up: none — no account system exists
+- Data: nothing is uploaded; no invoice content ever reaches a server
+- Currencies: 12 — INR (₹, lakh/crore grouping), USD, EUR, GBP, AED, SAR, QAR,
+  SGD, AUD, CAD, MYR, JPY
+- Formatting: live A4 preview, percentage or flat discount, tax rate, logo and
+  accent colour
+- Maker: Saarthi Studio — https://www.saarthistudio.com
+
+## Pages
+
+- [Invoicely — free invoice maker](https://invoicely.saarthistudio.com): product
+  overview, three-step workflow, six features, five FAQ answers. ~900 tokens.
+- [Create an invoice](https://invoicely.saarthistudio.com/tool): the editor —
+  your details, the client's details, invoice number and dates, line items,
+  discount, tax, notes and payment instructions, live preview, PDF download.
+  ~250 tokens.
+- [Privacy](https://invoicely.saarthistudio.com/privacy): what is stored
+  (nothing server-side), how the PDF is generated, tracking policy. ~300 tokens.
+
+## Full text
+
+- [llms-full.txt](https://invoicely.saarthistudio.com/llms-full.txt): every page
+  above as plain text for one-fetch ingestion. ~1,300 tokens.
+
+## Optional
+
+- [Sitemap](https://invoicely.saarthistudio.com/sitemap.xml): XML sitemap, 3 URLs.
+- [Robots policy](https://invoicely.saarthistudio.com/robots.txt): every AI
+  crawler is allowed.

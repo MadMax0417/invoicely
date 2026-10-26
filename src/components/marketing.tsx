@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { BIO_LINKS } from "@/lib/links";
-
-const SITE_URL = "https://invoicely.saarthistudio.com";
+import { app, faqPage, graph, organization, website } from "@/lib/schema";
 
 const KICKER_CLS =
   "text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-400";
@@ -63,44 +62,12 @@ const FAQS = [
   },
 ];
 
-const LD_JSON = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      name: "Invoicely",
-      url: SITE_URL,
-      publisher: {
-        "@type": "Organization",
-        name: "Saarthi Studio",
-        url: "https://www.saarthistudio.com",
-      },
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: "Invoicely",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
-      url: `${SITE_URL}/tool`,
-      description:
-        "Create and download professional invoices in seconds. Free, no sign-up — your data never leaves your browser.",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
-      publisher: {
-        "@type": "Organization",
-        name: "Saarthi Studio",
-        url: "https://www.saarthistudio.com",
-      },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: { "@type": "Answer", text: faq.a },
-      })),
-    },
-  ],
-};
+const LD_JSON = graph([
+  organization,
+  website,
+  app(FEATURES.map((feature) => feature.title)),
+  faqPage(FAQS),
+]);
 
 function Chevron() {
   return (
